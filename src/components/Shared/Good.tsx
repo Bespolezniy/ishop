@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React, { useContext } from "react"
+import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 import { 
   Typography, 
@@ -8,24 +8,28 @@ import {
   IconButton,
   Divider,
   Badge
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { Star, StarBorderOutlined, Toc, ShoppingCart, FavoriteBorder } from '@material-ui/icons';
+} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import { 
+  Star, 
+  StarBorderOutlined, 
+  Toc, 
+  ShoppingCart, 
+  FavoriteBorder 
+} from "@material-ui/icons"
 
 import { CurrencyContext } from "../../Root";
 
 const useStyles = makeStyles( theme => ({
   goodCard: {
     marginTop: 15,
-    padding: "0 15px",
-    [theme.breakpoints.up("md")]: {
-      maxWidth: 300,
-    }
+    maxWidth: 300,
+    padding: "0 15px"
   },
   list: {
     display: "flex",
     listStyle: "none",
-    paddingLeft: 0,
+    paddingLeft: 0
   },
   goodTitle: {
     color: theme.palette.primary.dark,
@@ -111,11 +115,13 @@ const Good = (props: Props) => {
   } = props.good
 
   const getRightFormatPrice = (price:number|null):string|null => {
+
     if (currency === "RUB") {
       return `${(price as number) * 60}₽`
     } else if (currency === "USD") {
       return `$${price}`
     }
+
     return null
   }
 
@@ -127,29 +133,51 @@ const Good = (props: Props) => {
       > 
         <Link to="good/" className={classes.imgLink}>
           <img src={url[0]} width="100%" height="275" alt={name} />
-          <img src={url[1]} width="100%" height="275" alt={name} className={classes.secondImg} />
+
+          <img 
+            src={url[1]} 
+            width="100%" 
+            height="275" 
+            alt={name} 
+            className={classes.secondImg} 
+          />
         </Link>
       </Badge>
 
       <ul className={classes.list}>
-        {stars.map((item:number, index:number) => {
+        {stars.map((item:number, i:number) => {
+
           if (item === 1) {
             return (
-              <li key={index}>
+              <li key={i}>
                 <Star fontSize="small" color="secondary" />
               </li>
             )
           }
+
           return (
-            <li>
-              <StarBorderOutlined fontSize="small" key={index} color="primary" />
+            <li key={i}>
+              <StarBorderOutlined 
+                fontSize="small" 
+                color="primary" 
+              />
             </li>)
         })}
 
-        <li className={classes.reviews}>{reviews.length > 0 ? `${reviews.length} Обзор(ы)`: null}</li>
+        <li 
+          className={classes.reviews}
+        >
+          {reviews.length > 0 ? `${reviews.length} Обзор(ы)`: null}
+        </li>
       </ul>
 
-      <Link to={`${name}/`} title={name} className={classes.goodTitle}>{name}</Link>
+      <Link 
+        to={`${name}/`} 
+        title={name} 
+        className={classes.goodTitle}
+      >
+        {name}
+      </Link>
 
       <Badge 
         color="secondary" 
@@ -159,28 +187,46 @@ const Good = (props: Props) => {
           horizontal: 'right',
         }}
       >
-        <Typography className={classes.finalPrice} variant="subtitle1" color="secondary">
+        <Typography 
+          className={classes.finalPrice} 
+          variant="subtitle1" 
+          color="secondary"
+        >
           {getRightFormatPrice(finalPrice)}
-          {discount ? <span className={classes.prevPrice}>{getRightFormatPrice(price)}</span> : null}
+
+          {discount ? 
+            <span className={classes.prevPrice}>
+              {getRightFormatPrice(price)}
+            </span> : null
+          }
         </Typography>
       </Badge>
       <Divider className={classes.divider}/>
 
       <ul className={classes.list}>
         <li>
-          <IconButton title={t("В корзину")} className={classes.iconBtn}>
+          <IconButton 
+            title={t("В корзину")} 
+            className={classes.iconBtn}
+          >
             <ShoppingCart />
           </IconButton>
         </li>
 
         <li>
-          <IconButton title={t("Добавить в избранное")} className={classes.iconBtn}>
+          <IconButton 
+            title={t("Добавить в избранное")} 
+            className={classes.iconBtn}
+          >
             <FavoriteBorder />
           </IconButton>
         </li>
 
         <li>
-          <IconButton title={t("Добавить в сравнение")} className={classes.iconBtn}>
+          <IconButton 
+            title={t("Добавить в сравнение")} 
+            className={classes.iconBtn}
+          >
             <Toc />
           </IconButton>
         </li>

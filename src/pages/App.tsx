@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "../components/App/Carousel";
 import Banners from "../components/App/Banners";
 import NewProducts from "../components/App/NewProducts";
-import ParallaxSection from "../components/App/Parallax";
+import NewMacbookBlock from "../components/App/NewMacbookBlock";
 import ExtraInfo from "../components/App/ExtraInfo";
 
 const App: React.FC = () => {
@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <Carousel />
       <Banners />
       <NewProducts />
-      <ParallaxSection />
+      <NewMacbookBlock />
       <ExtraInfo />
     </main>
   )

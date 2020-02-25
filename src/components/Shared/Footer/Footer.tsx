@@ -169,7 +169,11 @@ const Footer: React.FC = () => {
                 <ul className={classes.footerList}>
                   {item.links.map((link:any, i:number) => (
                     <li key={i} className={classes.listItem}>
-                      <Link className={classes.footerLink} to={link.linkPath}>
+                      <Link 
+                        title={t(link.linkName)} 
+                        className={classes.footerLink} 
+                        to={link.linkPath}
+                      >
                         {t(link.linkName)}
                       </Link>
                     </li>

@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   form: {
     alignItems: "flex-end",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    [theme.breakpoints.down("xs")]: {
+      alignItems: "center",
+      flexDirection: "column"
+    }
   },
   divider: {
     marginTop: 15
@@ -26,6 +30,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     "&:hover": {
       color: theme.palette.secondary.main,
       transitionDuration: ".25s"
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: "10px 0"
     }
   }
 }))

@@ -1,15 +1,17 @@
-import React from "react";
+import React from "react"
+import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom";
 
 import { 
   Typography, 
   Box
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
 import {
   AccountBalanceWallet,
   LocalShipping,
   AttachMoney
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 
 
 const useStyles = makeStyles( theme => ({
@@ -23,13 +25,12 @@ const useStyles = makeStyles( theme => ({
     }
   },
   infoBlock: {
-    alignItems: "center",
     border: "1px solid grey",
     borderRadius: 6,
-    display: "flex",
-    flexDirection: "column",
+    color: theme.palette.primary.main,
     margin: "0 10px",
     marginBottom: 50,
+    textDecoration: "none",
     width: "33%",
     "&:hover": {
       borderColor: theme.palette.secondary.main,
@@ -64,52 +65,69 @@ const useStyles = makeStyles( theme => ({
 const ExtraInfo: React.FC = () => {
 
   const classes = useStyles()
-
-  const title = "Payment Methods"
-  const text = "It is equally important to choose the solution which offers a specific selection of credit cards that are most popular in the merchants target markets. We take Visa & MasterCard as they are widely used by cyber customers."
+  const { t } = useTranslation()
 
   return (
     <section className={classes.extraInfo}>
-      <Box padding={3} className={classes.infoBlock}>
-        <Typography className={classes.blockTitle} variant="h5">
-          <AccountBalanceWallet className={classes.titleIcon} color="secondary"/>
-          {title}
-        </Typography>
+      <Link to="/" className={classes.infoBlock}>
+        <Box 
+          padding={3} 
+          display="flex" 
+          flexDirection="column" 
+          alignItems="center"
+        >
+          <Typography className={classes.blockTitle} variant="h5">
+            <AccountBalanceWallet className={classes.titleIcon} color="secondary"/>
+            {t("Способы оплаты")}
+          </Typography>
 
-        <Typography className={classes.blockText} variant="body1">
-          {text}
-        </Typography>
+          <Typography className={classes.blockText} variant="body1">
+            {t("Важно выбрать не только решение которое предлагает специфичные методы оплаты но и популярное на онлайн рынке. Мы остановились на Visa & MasterCard так как они широко распространены среди покупателей")}
+          </Typography>
  
-        <Box className={classes.paymentMethods}>
-          <i className="fab fa-cc-paypal"></i>
-          <i className="fab fa-cc-mastercard"></i>
-          <i className="fab fa-cc-visa"></i>
+          <Box className={classes.paymentMethods}>
+            <i className="fab fa-cc-paypal"></i>
+            <i className="fab fa-cc-mastercard"></i>
+            <i className="fab fa-cc-visa"></i>
+          </Box>
         </Box>
-      </Box>
+      </Link>
 
-      <Box padding={3} className={classes.infoBlock}>
-        <Typography className={classes.blockTitle} variant="h5">
-          <LocalShipping className={classes.titleIcon} color="secondary"/>
-          Shipping and Delivery
-        </Typography>
+      <Link to="/" className={classes.infoBlock}>
+        <Box 
+          padding={3} 
+          display="flex" 
+          flexDirection="column" 
+          alignItems="center"
+        >
+          <Typography className={classes.blockTitle} variant="h5">
+            <LocalShipping className={classes.titleIcon} color="secondary"/>
+            {t("Отправление и доставка")}
+          </Typography>
 
-        <Typography className={classes.blockText} variant="body1">
-          Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your 
-          order to your new treasures arriving at your doorstep.
-        </Typography>
-      </Box>
+          <Typography className={classes.blockText} variant="body1">
+            {t("Здесь вы можете узнать детали о том как ваш заказ могут доставить до вашего дома.")}
+          </Typography>
+        </Box>
+      </Link>
 
-      <Box padding={3} className={classes.infoBlock}>
-        <Typography className={classes.blockTitle} variant="h5">
-          <AttachMoney className={classes.titleIcon} color="secondary"/>
-          100% money back guarantee
-        </Typography>
+      <Link to="/" className={classes.infoBlock}>
+        <Box 
+          padding={3} 
+          display="flex" 
+          flexDirection="column" 
+          alignItems="center"
+        >
+          <Typography className={classes.blockTitle} variant="h5">
+            <AttachMoney className={classes.titleIcon} color="secondary"/>
+            {t("100% гарантия возврата денег")}
+          </Typography>
 
-        <Typography className={classes.blockText} variant="body1">
-          If you are not 100% satisfied with the results from your listing, request a free reposting or a full refund within 
-          30 days after your listing expires. 
-        </Typography>
-      </Box>
+          <Typography className={classes.blockText} variant="body1">
+            {t("Если вы на 100% недовольны результатом запросите бесплатную замену посылки или полное возмещение в течение 30 дней")} 
+          </Typography>
+        </Box>
+      </Link>
     </section>
   )
 }

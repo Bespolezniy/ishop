@@ -12,7 +12,7 @@ import {
 
 const useStyles = makeStyles((theme: Theme) => ({
   form: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   filterSection: {
     padding: "10px 0"

@@ -16,6 +16,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: -3,
     paddingLeft: 20
   },
+  category: {
+    [theme.breakpoints.down("xs")]: {
+      alignItems: "center",
+      flexDirection: "column"
+    }
+  },
+  subcategoryBox: {
+    flexWrap: "wrap"
+  },
   subcategoryLink: {
     alignItems: "center",
     border: "1px solid transparent",
@@ -52,13 +61,18 @@ const CategoryBlock = () => {
 
       <Divider className={classes.divider}/>
 
-      <Box display="flex" alignItems="center" marginTop={2}>
+      <Box 
+        display="flex" 
+        alignItems="center" 
+        marginTop={2}
+        className={classes.category}
+      >
         <img className={classes.categoryImg} src={CategoryImg} width="200" alt="category"/>
 
-        <Typography>
+        <Typography gutterBottom>
           MacBook задаёт совершенно новые стандарты мощности и портативности ноутбуков. Процессоры высокой 
           производительности, память большего объёма, передовая графика, сверхбыстрые накопители и другие впечатляющие 
-          способности MacBook Pro помогут воплотить любые творческие проекты — ещё быстрее, чем раньше. 
+          способности MacBook помогут воплотить любые творческие проекты — ещё быстрее, чем раньше. 
           И это при весе немногим более килограмма.
         </Typography>
       </Box>
@@ -69,7 +83,12 @@ const CategoryBlock = () => {
         Подкатегории
       </Typography>
 
-      <Box display="flex" marginTop={2} marginBottom={2}>
+      <Box 
+        display="flex" 
+        className={classes.subcategoryBox} 
+        marginTop={2} 
+        marginBottom={2}
+      >
         <Link to="/" className={classes.subcategoryLink}>
           <img src={CategoryImg} width="150" alt="category"/>
           Macbook Air

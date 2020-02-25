@@ -7,6 +7,7 @@ import AppBarHeader from "./components/Shared/AppBar";
 import App from "./pages/App";
 import Footer from "./components/Shared/Footer/Footer";
 import Catalog from "./pages/Catalog"
+import GoodDetail from "./pages/GoodDetail"
 
 type currency = {
   currency: string,
@@ -32,12 +33,9 @@ const Root: React.FC = () => {
         <Header />
         <AppBarHeader />
         <Switch>
-          <Route path="/catalog">
-            <Catalog />
-          </Route>
-          <Route path="/">
-            <App />
-          </Route>
+          <Route path="/catalog/good" component={GoodDetail} />
+          <Route path="/catalog" component={Catalog} />
+          <Route path="/" component={App} />
         </Switch>
         <Footer />
       </Router>

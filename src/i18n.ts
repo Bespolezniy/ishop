@@ -57,7 +57,26 @@ const resources: any = {
       "Мои адресса": "My addresses",
       "Моя личная информация": "My personal information",
       "Контактная информация": "Contact information",
-      "Звоните нам": "Call"
+      "Звоните нам": "Call",
+      "Способы оплаты": "Payment Methods",
+      "Важно выбрать не только решение которое предлагает специфичные методы оплаты но и популярное на онлайн рынке. Мы остановились на Visa & MasterCard так как они широко распространены среди покупателей":
+      `It is equally important to choose the solution which offers a specific selection of credit cards that are most 
+      popular in the merchants target markets. We take Visa & MasterCard as they are widely used by cyber customers.`,
+      "Отправление и доставка":"Shipping and Delivery",
+      "Здесь вы можете узнать детали о том как ваш заказ могут доставить до вашего дома.":
+      `Here you can read some details about a nifty little lifecycle of your order's 
+      journey from the time you place your order to your new treasures arriving at your doorstep.`,
+      "100% гарантия возврата денег": "100% money back guarantee",
+      "Если вы на 100% недовольны результатом запросите бесплатную замену посылки или полное возмещение в течение 30 дней":
+      `If you are not 100% satisfied with the results from your listing, request a free reposting or a full refund within 
+      30 days after your listing expires.`,
+      "Почти невесомый. На новой высоте.":"Lightness strikes again",
+      "Новый MacBook Air весит всего 1,25 кг, а способен на многое. Процессор Intel Core i5 восьмого поколения легко справляется с разными задачами — от чтения писем и просмотра сайтов до создания презентаций в Keynote и монтажа видео в iMovie. Память до 16 ГБ позволяет работать в нескольких приложениях сразу, а SSD‑накопитель до 1 ТБ — мгновенно открывать приложения и хранить множество документов, фото и видео.":
+      `Even though it weighs just 2.75 pounds, the new MacBook Air packs quite a punch. An eighth-generation Intel Core i5 
+      processor helps you power through daily activities, from reading email and browsing the web to creating Keynote 
+      presentations and editing in iMovie. Up to 16GB of memory lets you work seamlessly even with multiple apps open, 
+      while up to 1TB of SSD storage lets you launch apps in a flash and provides plenty of room for all your documents, 
+      photos, and videos.`
     }
   }
 }

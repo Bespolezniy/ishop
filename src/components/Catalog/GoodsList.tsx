@@ -1,14 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { 
   Divider,
   Typography,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Box
+  Box,
+  Button,
 } from "@material-ui/core"
 import Pagination from "@material-ui/lab/Pagination"
 
@@ -28,15 +25,37 @@ const useStyles = makeStyles((theme: Theme) => ({
   goodsList: {
     display: "flex",
     flexWrap: "wrap",
-    padding: "0 10px"
+    justifyContent: "space-between",
+    padding: "0 10px",
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+    },
+    [theme.breakpoints.down("xs")]: {
+      alignItems: "center",
+      flexDirection: "column",
+      padding: 0,
+    }
+  },
+  listOptions: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "30px",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
+  },
+  btn: {
+    marginRight: 25,
+    [theme.breakpoints.down("sm")]: {
+      margin: "15px 10px"
+    }
   }
 }))
 
 const GoodsList = () => {
 
   const classes = useStyles()
-  const [sortType, setSortType] = useState("price")
-  const [ammount, setAmmount] = useState("9")
 
   const goods = [
     {
@@ -161,22 +180,35 @@ const GoodsList = () => {
     }
   ]
 
-  const handleChangeSort = (event: React.ChangeEvent<{ value: unknown }>): void => {
-    setSortType((event.target.value as string))
-  }
-
-  const handleChangeAmmount = (event: React.ChangeEvent<{ value: unknown }>): void => {
-    setAmmount((event.target.value as string))
-  }
-
   return (
     <section>
       <Box className={classes.goodsList}>
-        {goods.map( (item, index) => <Good key={index} good={item} />)}
+        {goods.map((item, i) => <Good key={i} good={item} />)}
       </Box>
+      <Divider />
 
-      <Box>
-        <Pagination count={3} variant="outlined" shape="rounded" />
+      <Box className={classes.listOptions}>
+        <Pagination count={3} variant="outlined" color="secondary" shape="rounded" />
+
+        <Box>
+          <Button 
+            className={classes.btn} 
+            variant="contained" 
+            color="secondary"
+          >
+            Показать все
+          </Button>
+          <Button 
+            variant="contained" 
+            color="secondary"
+          >
+            Сравнить (2)
+          </Button>
+        </Box>
+
+        <Typography>
+          Показано 1 - 6 из 20 товаров
+        </Typography>
       </Box>
     </section>
   )

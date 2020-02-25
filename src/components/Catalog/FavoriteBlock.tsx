@@ -7,14 +7,17 @@ import {
   Button
  } from "@material-ui/core"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( theme => ({
   favoriteBlock: {
-    marginTop: "15px 0"
+    margin: "15px 0",
+    [theme.breakpoints.only("sm")]: {
+      margin: "0 0 15px 0",
+    }
   },
   divider: {
     margin: "10px 0"
   }
-})
+}))
 
 const FavoriteCatalog = () => {
 
