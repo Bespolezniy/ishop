@@ -36,7 +36,7 @@ const Root: React.FC = () => {
         <AppBarHeader />
 
         <Switch>
-          <Route path="/support" component={Cart} />
+          <Route path="/support" component={Support} />
           <Route path="/catalog/good" component={GoodDetail} />
           <Route path="/catalog" component={Catalog} />
           <Route path="/cart" component={Cart} />

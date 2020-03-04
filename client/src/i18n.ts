@@ -76,7 +76,20 @@ const resources: any = {
       processor helps you power through daily activities, from reading email and browsing the web to creating Keynote 
       presentations and editing in iMovie. Up to 16GB of memory lets you work seamlessly even with multiple apps open, 
       while up to 1TB of SSD storage lets you launch apps in a flash and provides plenty of room for all your documents, 
-      photos, and videos.`
+      photos, and videos.`,
+      "Служба поддержки": "Support service",
+      "Служба поддержки - свяжитесь с нами": "Support service - contact with us",
+      "Тема":"Theme",
+      "--Выбрать--": "--Choice--",
+      "Обслуживание покупателей": "Customer service",
+      "Разработчик": "Developer",
+      "Ваш email": "Your email",
+      "Код продукта": "Product code",
+      "Опишите вашу проблему": "Add description of your problem",
+      "Описание": "Description",
+      "Отправить": "Send",
+      "Отправить сообщение": "Send message",
+      "Ваше сообщение успешно доставлено": "Your message was successfully delivered"
     }
   }
 }

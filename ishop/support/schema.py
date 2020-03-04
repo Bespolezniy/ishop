@@ -22,21 +22,23 @@ class CreateSupportMessage(graphene.Mutation):
     class Arguments:
         theme = graphene.String(required = True)
         text = graphene.String(required = True)
-        file_url = graphene.String()
-        order_code = graphene.Int(required = True)
+        order_code = graphene.Int()
         email = graphene.String(required = True)
+        url = graphene.String()
     
-    def mutate(self, info, theme, text, file_url, order_code, email): 
+    def mutate(self, info, theme, text, order_code, email, url): 
+        
         message = SupportMessage(
             theme = theme, 
-            text = text, 
-            file_url = file_url, 
+            text = text,  
             order_code = order_code,
-            email = email
+            email = email,
+            url = url
         )
+
         message.save()
         return CreateSupportMessage(message = message)
     
     
 class Mutation(graphene.ObjectType):
-    create_support_message =CreateSupportMessage.Field()
+    create_support_message= CreateSupportMessage.Field()

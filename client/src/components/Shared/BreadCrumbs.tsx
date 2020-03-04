@@ -1,24 +1,13 @@
 import React from "react"
-import { Route, MemoryRouter } from "react-router"
-import { Link as RouterLink } from "react-router-dom"
+import { Link as RouterLink, useRouteMatch } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { 
-  Box,
   Link,
-  LinkProps,
-  Typography,
   Breadcrumbs
  } from "@material-ui/core"
- import { Home } from "@material-ui/icons"
-
-const breadcrumbNameMap: { [key: string]: string } = {
-  '/inbox': 'Inbox',
-  '/inbox/important': 'Important',
-  '/trash': 'Trash',
-  '/spam': 'Spam',
-  '/drafts': 'Drafts'
-}
+ import { Home, ContactSupport } from "@material-ui/icons"
 
 const useStyles = makeStyles((theme: Theme) => ({
   breadcrumbs: {
@@ -38,52 +27,41 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-interface LinkRouterProps extends LinkProps {
-  to: string;
-  replace?: boolean;
-}
-
-const LinkRouter = (props: LinkRouterProps) => <Link {...props} component={RouterLink as any} />;
-
 const RouterBreadcrumbs = () => {
 
   const classes = useStyles()
+  const homeMatches = useRouteMatch("/")
+  const supportMatches = useRouteMatch("/support")
+  const { t } = useTranslation()
 
   return (
-    <MemoryRouter initialEntries={['/inbox']} initialIndex={0}>
-      <Box>
-        <Route>
-          {({ location }) => {
-            const pathnames = location.pathname.split('/').filter(x => x);
+    <Breadcrumbs 
+      className={classes.breadcrumbs} 
+      aria-label="breadcrumb"
+    >
+      {homeMatches && (
+        <Link 
+          className={classes.link} 
+          component={RouterLink} to="/"
+          title={t("Главная")}
+        >
+          <Home />
+          {t("Главная")}
+        </Link>
+      )}
 
-            return (
-              <Breadcrumbs className={classes.breadcrumbs} aria-label="breadcrumb">
-                <LinkRouter className={classes.link} color="inherit" to="/">
-                  <Home />
-                  Home
-                </LinkRouter>
-
-                {pathnames.map((value, index) => {
-                  const last = index === pathnames.length - 1;
-                  const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-
-                  return last ? (
-                    <Typography color="textPrimary" key={to}>
-                      {breadcrumbNameMap[to]}
-                    </Typography>
-                  ) : (
-                    <LinkRouter color="inherit" to={to} key={to}>
-                      {breadcrumbNameMap[to]}
-                    </LinkRouter>
-                  );
-                })}
-              </Breadcrumbs>
-            )
-          }}
-        </Route>
-
-      </Box>
-    </MemoryRouter>
+      {supportMatches && (
+        <Link 
+          className={classes.link} 
+          component={RouterLink} 
+          to="/support"
+          title={t("Служба поддержки")}
+        >
+          <ContactSupport />
+          {t("Служба поддержки")}
+        </Link>
+      )}         
+    </Breadcrumbs> 
   )
 }
 
